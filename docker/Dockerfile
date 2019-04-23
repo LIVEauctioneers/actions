@@ -9,7 +9,7 @@ LABEL "com.github.actions.description"="Wraps the Docker CLI to enable Docker co
 LABEL "com.github.actions.icon"="package"
 LABEL "com.github.actions.color"="blue"
 
-RUN apk add jq
+RUN apk add jq bash
 
 
 COPY README.md /

@@ -1,7 +1,8 @@
-#!/bin/sh -l
+#!/bin/bash -l
 
 
-EVENT_JSON=$(cat ${GITHUB_EVENT_PATH})
+export EVENT_JSON=$(cat ${GITHUB_EVENT_PATH})
+echo "Github Event JSON:\n${EVENT_JSON}"
 
 export PR_NUMBER=$(echo "$EVENT_JSON" | jq '.pull_request.number')
 export PR_STATE=$(echo "$EVENT_JSON" | jq '.pull_request.state')
@@ -12,4 +13,4 @@ export PR_CREATED=$(echo "$EVENT_JSON" | jq '.pull_request.created_at')
 export PR_MERGED=$(echo "$EVENT_JSON" | jq '.pull_request.merged')
 export PR_COMMITS=$(echo "$EVENT_JSON" | jq '.pull_request.commits')
 
-sh -c "docker $*"
+bash -c "docker $*"
