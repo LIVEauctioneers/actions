@@ -3,8 +3,6 @@
 
 EVENT_JSON=$(cat ${GITHUB_EVENT_PATH})
 
-echo "using '${EVENT_JSON}'"
-
 export PR_NUMBER=$(echo "$EVENT_JSON" | jq '.pull_request.number')
 export PR_STATE=$(echo "$EVENT_JSON" | jq '.pull_request.state')
 export PR_URL=$(echo "$EVENT_JSON" | jq '.pull_request.url')
